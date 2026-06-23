@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anthony Rasmussen</title>
+<meta name="description" content="Anthony Rasmussen — independent researcher and software engineer at Shack C Technologies. Data compression, linear algebra, and applied mathematics.">
+<meta name="author" content="Anthony Rasmussen">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Anthony Rasmussen">
+<meta property="og:description" content="Independent researcher and software engineer — data compression, linear algebra, and applied mathematics.">
+<meta property="og:url" content="https://shackc.tech">
+<style>
+  :root{
+    --bg:#f4f4ea;
+    --fg:#222619;
+    --muted:#676c5a;
+    --rule:#e0e0d0;
+    --accent:#5f7339;
+    --accent-fg:#4c5d2d;
+    --motif:#1f6f6b;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#14160f;
+      --fg:#e9ebdd;
+      --muted:#989a85;
+      --rule:#2a2d21;
+      --accent:#a3b96f;
+      --accent-fg:#b8cd86;
+      --motif:#6cb3aa;
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:42rem;margin:0 auto;padding:7vh 1.5rem 4rem;position:relative;z-index:1}
+  header h1{
+    font-family:"Iowan Old Style",Palatino,"Palatino Linotype","Book Antiqua",Georgia,serif;
+    font-weight:600;
+    font-size:clamp(2rem,6vw,2.7rem);
+    letter-spacing:-.01em;
+    line-height:1.1;
+    margin:0 0 .3rem;
+  }
+  .role{color:var(--muted);font-size:1.02rem;margin:0 0 1.9rem}
+  .bio{font-size:1.08rem;margin:0 0 1.5rem}
+  ul.tags{
+    display:flex;flex-wrap:wrap;gap:.45rem .5rem;
+    margin:0 0 2.75rem;padding:0;list-style:none;
+    font-size:.82rem;
+  }
+  ul.tags li{
+    color:var(--muted);
+    border:1px solid var(--rule);
+    border-radius:999px;
+    padding:.22rem .7rem;
+    white-space:nowrap;
+  }
+  section{margin:0 0 2.6rem}
+  h2{
+    font-size:.78rem;
+    text-transform:uppercase;
+    letter-spacing:.13em;
+    color:var(--muted);
+    font-weight:600;
+    margin:0 0 1.1rem;
+    padding-bottom:.55rem;
+    border-bottom:1px solid var(--rule);
+  }
+  .work{margin:0 0 1.2rem}
+  .work .title{font-weight:600}
+  a.title{
+    font-weight:600;
+    color:var(--fg);
+    text-decoration:none;
+    border-bottom:1px solid var(--accent);
+    padding-bottom:1px;
+  }
+  a.title:hover{color:var(--accent-fg)}
+  .work .meta{display:block;color:var(--muted);font-size:.85rem;margin-top:.15rem}
+  .more{font-size:.92rem;margin:.4rem 0 0}
+  .more a{color:var(--accent-fg);text-decoration:none}
+  .more a:hover{text-decoration:underline}
+  ul.links{
+    list-style:none;margin:0;padding:0;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));
+    gap:.65rem 1.5rem;
+  }
+  ul.links a{
+    color:var(--fg);text-decoration:none;
+    display:inline-flex;align-items:baseline;gap:.5rem;
+  }
+  ul.links a:hover{color:var(--accent-fg)}
+  ul.links .arr{color:var(--muted);font-size:.85em}
+  ul.links a:hover .arr{color:var(--accent-fg)}
+  footer{
+    margin-top:3rem;padding-top:1.3rem;
+    border-top:1px solid var(--rule);
+    color:var(--muted);font-size:.82rem;
+  }
+  /* faint background motifs — island life, ciphers, a leaning pine, equations */
+  .bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;color:var(--motif)}
+  .bg .m{position:absolute;opacity:.18}
+  .bg .m svg{display:block;width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+  .bg .m svg text{fill:currentColor;stroke:none;font:italic 600 15px "Iowan Old Style",Palatino,Georgia,serif}
+  .bg .eq{opacity:.14;font:italic 600 1.15rem/1 "Iowan Old Style",Palatino,Georgia,serif;white-space:nowrap;letter-spacing:.01em}
+  @media (max-width:640px){.bg .hide-sm{display:none}}
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true">
+  <div class="m eq" style="top:7.5%;left:5%;transform:rotate(-7deg)">U = H(K) / D</div>
+
+  <div class="m" style="top:4.5%;right:4%;width:140px;height:112px">
+    <svg viewBox="0 0 150 120">
+      <path d="M14 56 L75 22 L136 56"/>
+      <path d="M23 56 L127 56"/>
+      <path d="M38 56 L38 100 L112 100 L112 56"/>
+      <path d="M64 100 L64 72 L86 72 L86 100"/>
+      <path d="M46 66 h12 v12 h-12 Z"/>
+      <path d="M46 100 L46 112 M104 100 L104 112"/>
+      <path d="M30 112 H120"/>
+      <path d="M128 112 C132 88 138 80 135 62"/>
+      <path d="M135 62 C122 56 113 58 108 65"/>
+      <path d="M135 62 C146 56 150 60 150 66"/>
+      <path d="M135 62 C129 50 131 44 137 40"/>
+      <path d="M135 62 C143 52 150 50 150 53"/>
+    </svg>
+  </div>
+
+  <div class="m eq hide-sm" style="top:70%;left:5%;transform:rotate(-3deg)">G(x) = mex{ G(xᵢ) }</div>
+
+  <div class="m hide-sm" style="top:39%;left:3%;width:200px;height:66px;transform:rotate(-8deg)">
+    <svg viewBox="0 0 200 66">
+      <path d="M10 45 A8 8 0 0 1 26 45 M6 45 A12 12 0 0 1 30 45 M2 45 A16 16 0 0 1 34 45"/>
+      <path d="M55 35 A8 8 0 0 1 55 51 M55 30 A12 12 0 0 1 55 56"/>
+      <path d="M84 32 A10 10 0 0 0 104 32 M80 32 A14 14 0 0 0 108 32"/>
+      <path d="M120 45 A8 8 0 0 1 136 45 M116 45 A12 12 0 0 1 140 45"/>
+      <path d="M150 35 A8 8 0 0 0 150 51 M150 30 A12 12 0 0 0 150 56 M150 25 A16 16 0 0 0 150 61"/>
+    </svg>
+  </div>
+
+  <div class="m eq" style="top:64%;right:5%;transform:rotate(6deg)">θ ≈ θ⊙ · r/(1+r)</div>
+
+  <div class="m hide-sm" style="bottom:6%;left:6%;width:84px;height:130px">
+    <svg viewBox="0 0 90 140">
+      <path d="M42 138 C47 104 52 64 58 20"/>
+      <path d="M58 20 L59 13"/>
+      <path d="M58 22 q -9 5 -17 3 M58 22 q 9 5 16 5"/>
+      <path d="M55 40 q -13 7 -24 6 M55 40 q 12 7 20 8"/>
+      <path d="M52 60 q -16 9 -28 9 M52 60 q 14 9 22 10"/>
+      <path d="M49 86 q -18 10 -30 11 M49 86 q 15 10 24 12"/>
+      <path d="M45 112 q -19 11 -31 13 M45 112 q 16 11 25 14"/>
+    </svg>
+  </div>
+
+  <div class="m" style="bottom:6%;right:3.5%;width:84px;height:188px">
+    <svg viewBox="0 0 100 230">
+      <path d="M35 9 L42 13 L55 20 L70 24 L83 26 L90 30 L85 43 L80 60 L76 79 L69 100 L63 124 L55 153 L45 183 L36 204 L27 215 L17 220 L11 214 L10 198 L13 177 L17 153 L20 134 L17 115 L20 97 L13 77 L12 71 L15 57 L20 43 L27 25 Z"/>
+      <path d="M80 38 l4 4 m0 -4 l-4 4"/>
+    </svg>
+  </div>
+
+  <div class="m hide-sm" style="top:55%;left:4%;width:112px;height:96px">
+    <svg viewBox="0 0 128 104">
+      <path d="M40 14 H32 V90 H40"/>
+      <path d="M96 14 H104 V90 H96"/>
+      <text x="52" y="40" text-anchor="middle">a</text>
+      <text x="68" y="40" text-anchor="middle">b</text>
+      <text x="84" y="40" text-anchor="middle">c</text>
+      <text x="52" y="62" text-anchor="middle">c</text>
+      <text x="68" y="62" text-anchor="middle">a</text>
+      <text x="84" y="62" text-anchor="middle">b</text>
+      <text x="52" y="84" text-anchor="middle">b</text>
+      <text x="68" y="84" text-anchor="middle">c</text>
+      <text x="84" y="84" text-anchor="middle">a</text>
+    </svg>
+  </div>
+
+  <div class="m eq hide-sm" style="top:25%;right:5%;transform:rotate(5deg)">iℏ ∂ψ/∂t = Ĥψ</div>
+
+  <div class="m hide-sm" style="top:33%;right:4%;width:72px;height:117px">
+    <svg viewBox="0 0 96 156">
+      <path d="M34 16 L68 20 L74 34 L72 64 L67 86 L64 92 L82 116 L80 156 L16 156 L22 118 L33 100 L22 91 L30 85 L26 80 L31 76 L11 68 L29 53 L18 47 Z"/>
+      <path d="M19 47 L41 43 L52 47"/>
+      <path d="M49 42 L51 68 L47 95"/>
+      <path d="M30 54 L22 68 L13 68"/>
+      <path d="M25 81 L39 84"/>
+      <path d="M56 47 C62 48 62 56 61 62 L61 76 C61 84 57 86 54 84 C50 81 52 73 52 66 L53 55 C53 49 54 47 56 47 Z"/>
+      <path d="M24 52 L38 54 L36 61 L25 60 Z" style="fill:currentColor;stroke:none"/>
+    </svg>
+  </div>
+
+  <div class="m hide-sm" style="top:22%;left:4%;width:74px;height:74px">
+    <svg viewBox="0 0 100 100">
+      <ellipse cx="50" cy="50" rx="44" ry="17"/>
+      <ellipse cx="50" cy="50" rx="44" ry="17" transform="rotate(60 50 50)"/>
+      <ellipse cx="50" cy="50" rx="44" ry="17" transform="rotate(120 50 50)"/>
+      <circle cx="50" cy="50" r="8" style="fill:currentColor;stroke:none"/>
+      <circle cx="94" cy="50" r="4.5" style="fill:currentColor;stroke:none"/>
+      <circle cx="72" cy="88" r="4.5" style="fill:currentColor;stroke:none"/>
+      <circle cx="28" cy="12" r="4.5" style="fill:currentColor;stroke:none"/>
+    </svg>
+  </div>
+
+  <div class="m hide-sm" style="top:50%;right:5%;width:82px;height:88px;transform:rotate(2deg)">
+    <svg viewBox="0 0 112 120">
+      <path d="M37 72 L88 21 Q95 15 98 24 Q100 29 95 31 L46 81 Z"/>
+      <path d="M37 72 L22 96 L46 81"/>
+      <path d="M22 96 L41 77"/>
+      <path d="M41 67 L50 76 M45 63 L54 72"/>
+      <circle cx="38" cy="81" r="1.6"/>
+      <path d="M14 103 C26 96 32 110 46 104 C56 100 62 109 74 103"/>
+    </svg>
+  </div>
+</div>
+<main class="wrap">
+  <header>
+    <h1>Anthony Rasmussen</h1>
+    <p class="role">Shack&nbsp;C&nbsp;Technologies · Australia</p>
+  </header>
+
+  <p class="bio">Independent researcher and software engineer. I spend most of my time on data compression and linear algebra, with occasional detours into other corners of applied mathematics. Earlier life: a PhD in the high-performance modelling of chemical reaction dynamics.</p>
+
+  <ul class="tags">
+    <li>Data compression</li>
+    <li>Linear algebra</li>
+    <li>Quantum dynamics</li>
+    <li>Applied mathematics</li>
+  </ul>
+
+  <section>
+    <h2>Recent work</h2>
+    <div class="work">
+      <a class="title" href="https://doi.org/10.5281/zenodo.20763204">Spectral persymmetry of complex circulant and skew-circulant matrices</a>
+      <span class="meta">Preprint · Zenodo · 2026</span>
+    </div>
+    <div class="work">
+      <a class="title" href="https://doi.org/10.5281/zenodo.20684744">Combinadic Compression — a lossless byte-stream codec</a>
+      <span class="meta">Reference implementation · Zenodo · 2026</span>
+    </div>
+    <p class="more"><a href="https://scholar.google.com/citations?user=MGKO9AoAAAAJ">Full publication list on Google Scholar →</a></p>
+  </section>
+
+  <section>
+    <h2>Current interests</h2>
+    <div class="work">
+      <span class="title">Combinatorial game theory</span>
+      <span class="meta">Periodicity in the Grundy values of nim-like games.</span>
+    </div>
+    <div class="work">
+      <span class="title">The limits of short ciphertexts</span>
+      <span class="meta">When a message is seemingly too short to break.</span>
+    </div>
+    <div class="work">
+      <span class="title">Mathematical biology</span>
+      <span class="meta">Mechanistic models of plant form and orientation.</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Elsewhere</h2>
+    <ul class="links">
+      <li><a href="https://scholar.google.com/citations?user=MGKO9AoAAAAJ"><span>Google Scholar</span><span class="arr">&#8599;</span></a></li>
+      <li><a href="https://orcid.org/0009-0003-3924-319X"><span>ORCID</span><span class="arr">&#8599;</span></a></li>
+      <li><a href="https://github.com/ajr74"><span>GitHub</span><span class="arr">&#8599;</span></a></li>
+      <li><a id="email" href="#"><span class="elabel">Email</span><span class="arr">&#8599;</span></a></li>
+    </ul>
+  </section>
+
+  <footer>
+    &copy; 2026 Anthony Rasmussen · Shack C Technologies
+  </footer>
+</main>
+<script>
+  // The address is never written into the page text or the DOM — it's assembled
+  // only at the moment of a real click, so neither bulk harvesters nor JS-running
+  // scrapers find it on the page. Humans just click "Email" and their mail app opens.
+  (function () {
+    var user = "anthony", domain = "shackc.tech";
+    var a = document.getElementById("email");
+    if (!a) return;
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      window.location.href = "mailto:" + user + "@" + domain;
+    });
+  })();
+</script>
+</body>
+</html>
